@@ -1,0 +1,89 @@
+<div class="box">
+
+  <div class="item-box angular-logo">
+    <img ddMatStyle alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  </div>
+
+  <div class="item-box">
+    <div class="left-box">
+      <div><button class="swipe" (click)="freeBoxConfig.matClick = !freeBoxConfig.matClick">matClick</button></div>
+      <div><button class="swipe" (click)="freeBoxConfig.shadow = !freeBoxConfig.shadow">shadow</button></div>
+      <div><button class="swipe" (click)="freeBoxConfig.swipe = freeBoxConfig.swipe ? null : classSwipe">swipe</button></div>
+    </div>
+    <div class='item free-box' ddMatStyle [config]="{matClick: freeBoxConfig.matClick, shadow: freeBoxConfig.shadow, swipe: freeBoxConfig.swipe}">
+      <span>I free box</span>
+      <button class="swipe" *ngIf="freeBoxConfig.swipe">swipe me</button>
+    </div>
+  </div>
+
+  <div class="item-box">
+    <div class="limit-box" #container1>
+      <div class='item free-box' [ddMatStyle]="container1" [config]="{elem: collect[0]}" (dDrop)="miniDrop($event)">
+        <span>I not free box</span>
+      </div>
+    </div>
+    <div class="review">
+      <label><strong>Changed object:</strong> {{ element }}</label><br>
+    </div>
+  </div>
+
+  <div class="item-box" style="display: flex">
+    <div class="vertical-box" #container2>
+      <d-d-material-style [config]="{direction: 'y', shadow: true}">
+        <div class='item {{ el.style }}' *ngFor="let el of miniCollect" [ddMatStyle]="container2">
+          <span>{{ el.data }}</span>
+        </div>
+      </d-d-material-style>
+    </div>
+    <div class="vertical-box" #container3>
+        <div class='item {{ el.style }}' *ngFor="let el of miniCollect" [ddMatStyle]="container3" [config]="{direction: 'y', shadow: true}">
+          <span>{{ el.data }}</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="item-box">
+    <div class="horizontal-box" #container4>
+      <d-d-material-style [config]="{direction: 'x', shadow: true}">
+        <div class='item {{ el.style }}' *ngFor="let el of miniCollect" [ddMatStyle]="container4">
+          <span>{{ el.data }}</span>
+        </div>
+      </d-d-material-style>
+    </div>
+    <div class="horizontal-box" #container5>
+      <div class='item {{ el.style }}' *ngFor="let el of miniCollect" [ddMatStyle]="container5" [config]="{direction: 'x', shadow: true}">
+        <span>{{ el.data }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="item-box grid-box" #container6>
+    <d-d-material-style [config]="{direction: 'grid'}">
+      <div *ngFor="let el of collect" class='item {{ el.style }}' [ddMatStyle]="container6" [config]="{shadow: true, swipe: el.id % 3 === 0 ? '.swipe' : null}">
+        <span>{{ el.data }}</span>
+        <button class="swipe" *ngIf="el.id % 3 === 0">swipe me</button>
+      z</div>
+    </d-d-material-style>
+  </div>
+
+  <div class="item-box grid-box" #container7>
+    <div *ngFor="let el of collect" class='item {{ el.style }}' [ddMatStyle]="container7" [config]="{direction: 'grid', shadow: true, swipe: el.id % 3 === 0 ? '.swipe' : null}">
+      <span>{{ el.data }}</span>
+      <button class="swipe" *ngIf="el.id % 3 === 0">swipe me</button>
+    </div>
+  </div>
+
+  <div class="item-box grid-box" #container8>
+    <d-d-material-style [config]="{direction: 'grid', shadow: true, collection: collect}" (dDrop)="onDrop($event)" (dChange)="onChange($event)">
+      <div *ngFor="let el of collect" class='item {{ el.style }}' [ddMatStyle]="container8">
+        <span>{{ el.data }}</span>
+      </div>
+    </d-d-material-style>
+    <div class="review">
+      <label><strong>Changed object:</strong> {{ element }}</label><br>
+      <span><strong>Sorter map:</strong></span>
+      <span *ngFor="let el of sorted">el: <i>{{ el }}</i> | </span>
+    </div>
+  </div>
+
+</div>

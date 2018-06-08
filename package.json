@@ -1,0 +1,30 @@
+{
+  "name": "d-d-material-style",
+  "version": "1.1.6",
+  "description": "drag and drop with material style",
+  "main": "bundles/d-d-material-style.umd.js",
+  "jsnext:main": "esm5/d-d-material-style.esm.js",
+  "module": "esm5/d-d-material-style.esm.js",
+  "esm5": "esm5/d-d-material-style.esm.js",
+  "esm2015": "esm2015/index.js",
+  "types": "src/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oosor/d-d-material-style.git"
+  },
+  "keywords": [
+    "drag",
+    "drop",
+    "material"
+  ],
+  "author": "queue",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oosor/d-d-material-style/issues"
+  },
+  "sideEffects": false,
+  "homepage": "https://github.com/oosor/d-d-material-style#readme"
+}
