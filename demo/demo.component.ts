@@ -31,7 +31,7 @@ export class DemoComponent implements OnInit {
   classSwipe: string = '.swipe';
   freeBoxConfig: any = {matClick: true, shadow: null, swipe:  null};
   sorted: any = [];
-  laterInit: boolean = false;
+  laterInit = false;
   private _element: any;
 
   constructor() { }
