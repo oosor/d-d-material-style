@@ -1,0 +1,45 @@
+{
+  "name": "d-d-material-style",
+  "version": "1.2.8",
+  "description": "drag and drop with material style",
+  "main": "bundles/d-d-material-style.umd.js",
+  "jsnext:main": "esm5/d-d-material-style.esm.js",
+  "module": "esm5/d-d-material-style.esm.js",
+  "esm5": "esm5/d-d-material-style.esm.js",
+  "esm2015": "esm2015/index.js",
+  "types": "src/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "transpile": "tsc -p tsconfig.json",
+    "package": "rollup -c rollup.config.umd.js && rollup -c rollup.config.esm.js",
+    "minify": "uglifyjs dist/bundles/d-d-material-style.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/d-d-material-style.umd.min.js",
+    "copy": "node tools/copy-package.js && node tools/cleanup-package.js",
+    "demo-copy": "cpx 'demo/*' dist/demo && cpx README.md dist/",
+    "bundle": "rimraf dist && npm run transpile && npm run package && ../../../node_modules/.bin/ngc -p tsconfig.json && npm run minify",
+    "postbundle": "node tools/removecode.js",
+    "build": "npm run bundle && npm run copy && npm run demo-copy",
+    "packagr": "ng-packagr -p ng-package.json"
+  },
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oosor/d-d-material-style.git"
+  },
+  "keywords": [
+    "drag",
+    "drop",
+    "material",
+    "angular"
+  ],
+  "author": "queue",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oosor/d-d-material-style/issues"
+  },
+  "sideEffects": false,
+  "homepage": "https://github.com/oosor/d-d-material-style#readme",
+  "dependencies": {}
+}
