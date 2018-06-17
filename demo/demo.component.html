@@ -10,10 +10,12 @@
       <div><button class="swipe" (click)="freeBoxConfig.shadow = !freeBoxConfig.shadow">shadow</button></div>
       <div><button class="swipe" (click)="freeBoxConfig.swipe = freeBoxConfig.swipe ? null : classSwipe">swipe</button></div>
       <div><button class="swipe" (click)="laterInit = true">laterInit</button></div>
+      <div><button class="swipe" (click)="draggable = !draggable">draggable</button></div>
     </div>
     <div class='item free-box'
          [config]="{matClick: freeBoxConfig.matClick, shadow: freeBoxConfig.shadow, swipe: freeBoxConfig.swipe}"
          [laterInit]="laterInit"
+         [draggable]="draggable"
          ddMatStyle>
       <span>I free box</span>
       <button class="swipe" *ngIf="freeBoxConfig.swipe">swipe me</button>
@@ -22,7 +24,7 @@
 
   <div class="item-box">
     <div class="limit-box" #container1>
-      <div class='item free-box' [ddMatStyle]="container1" [config]="{elem: collect[0]}" (dDrop)="miniDrop($event)">
+      <div class='item free-box' ddMatStyle [config]="{container: container1, elem: collect[0]}" (dDrop)="miniDrop($event)">
         <span>I not free box</span>
       </div>
     </div>
@@ -33,14 +35,14 @@
 
   <div class="item-box" style="display: flex">
     <div class="vertical-box" #container2>
-      <d-d-material-style [config]="{direction: 'y', shadow: true}">
-        <div class='item {{ el.style }}' *ngFor="let el of miniCollect" [ddMatStyle]="container2">
+      <d-d-material-style [config]="{container: container2, direction: 'y', shadow: true}">
+        <div class='item {{ el.style }}' *ngFor="let el of miniCollect" ddMatStyle>
           <span>{{ el.data }}</span>
         </div>
       </d-d-material-style>
     </div>
     <div class="vertical-box" #container3>
-        <div class='item {{ el.style }}' *ngFor="let el of miniCollect" [ddMatStyle]="container3" [config]="{direction: 'y', shadow: true}">
+        <div class='item {{ el.style }}' *ngFor="let el of miniCollect" ddMatStyle [config]="{container: container3, direction: 'y', shadow: true}">
           <span>{{ el.data }}</span>
         </div>
     </div>
@@ -48,22 +50,22 @@
 
   <div class="item-box">
     <div class="horizontal-box" #container4>
-      <d-d-material-style [config]="{direction: 'x', shadow: true}">
-        <div class='item {{ el.style }}' *ngFor="let el of miniCollect" [ddMatStyle]="container4">
+      <d-d-material-style [config]="{container: container4, direction: 'x', shadow: true}">
+        <div class='item {{ el.style }}' *ngFor="let el of miniCollect" ddMatStyle>
           <span>{{ el.data }}</span>
         </div>
       </d-d-material-style>
     </div>
     <div class="horizontal-box" #container5>
-      <div class='item {{ el.style }}' *ngFor="let el of miniCollect" [ddMatStyle]="container5" [config]="{direction: 'x', shadow: true}">
+      <div class='item {{ el.style }}' *ngFor="let el of miniCollect" ddMatStyle [config]="{container: container5, direction: 'x', shadow: true}">
         <span>{{ el.data }}</span>
       </div>
     </div>
   </div>
 
   <div class="item-box grid-box" #container6>
-    <d-d-material-style [config]="{direction: 'grid'}">
-      <div *ngFor="let el of collect" class='item {{ el.style }}' [ddMatStyle]="container6" [config]="{shadow: true, swipe: el.id % 3 === 0 ? '.swipe' : null}">
+    <d-d-material-style [config]="{container: container6, direction: 'grid'}">
+      <div *ngFor="let el of collect" class='item {{ el.style }}' ddMatStyle [config]="{shadow: true, swipe: el.id % 3 === 0 ? '.swipe' : null}">
         <span>{{ el.data }}</span>
         <button class="swipe" *ngIf="el.id % 3 === 0">swipe me</button>
       z</div>
@@ -71,15 +73,15 @@
   </div>
 
   <div class="item-box grid-box" #container7>
-    <div *ngFor="let el of collect" class='item {{ el.style }}' [ddMatStyle]="container7" [config]="{direction: 'grid', shadow: true, swipe: el.id % 3 === 0 ? '.swipe' : null}">
+    <div *ngFor="let el of collect" class='item {{ el.style }}' ddMatStyle [config]="{container: container7, direction: 'grid', shadow: true, swipe: el.id % 3 === 0 ? '.swipe' : null}">
       <span>{{ el.data }}</span>
       <button class="swipe" *ngIf="el.id % 3 === 0">swipe me</button>
     </div>
   </div>
 
   <div class="item-box grid-box" #container8>
-    <d-d-material-style [config]="{direction: 'grid', shadow: true, collection: collect}" (dDrop)="onDrop($event)" (dChange)="onChange($event)">
-      <div *ngFor="let el of collect" class='item {{ el.style }}' [ddMatStyle]="container8">
+    <d-d-material-style [config]="{container: container8, direction: 'grid', shadow: true, collection: collect}" (dDrop)="onDrop($event)" (dChange)="onChange($event)">
+      <div *ngFor="let el of collect" class='item {{ el.style }}' ddMatStyle>
         <span>{{ el.data }}</span>
       </div>
     </d-d-material-style>

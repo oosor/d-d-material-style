@@ -3,7 +3,7 @@ drag and drop with material style
 
 ### Demo
  
-<a target="_blank" href="https://angular-jd6bgy.stackblitz.io/">https://angular-jd6bgy.stackblitz.io/</a>
+<a target="_blank" href="https://angular-jd6bgy.stackblitz.io">https://angular-jd6bgy.stackblitz.io</a>
 or
 <a target="_blank" href="https://stackblitz.com/edit/angular-jd6bgy">stackblitz editor</a>
 
@@ -31,13 +31,15 @@ import { DDMaterialStyleModule } from 'd-d-material-style';
 
 ```
 <div class="limit-box" #container>
-  <div [ddMatStyle]='container'>Dragable div inner div.limit-box</div>
+  <div ddMatStyle config="{container: container}">Dragable div inner div.limit-box</div>
 </div>
 ```
 
 #### Directive config
 ```
-@Input() config: {direction?: 'x' | 'y' | 'grid', matClick?: boolean, shadow?: boolean, elem?: any, swipe?: string}
+@Input() config: {container: any, direction?: 'x' | 'y' | 'grid', matClick?: boolean, shadow?: boolean, elem?: any, swipe?: string, autoWidth?: boolean, autoHeight?: boolean}
+@Input() draggable: boolean;
+@Input() laterInit: boolean;
 @Output() dChange: EventEmitter<IEvent>
 @Output() dDrop: EventEmitter<IEvent>
 ```
@@ -55,8 +57,8 @@ See at <a target="_blank" href="https://stackblitz.com/edit/angular-jd6bgy?file=
 
 ```
 <div class="vertical-box" #container>
-  <d-d-material-style [config]="{direction: 'y', shadow: true}">
-    <div class='item {{ el.style }}' *ngFor="let el of miniCollect" [ddMatStyle]="container">
+  <d-d-material-style [config]="{container: container, direction: 'y', shadow: true}">
+    <div class='item {{ el.style }}' *ngFor="let el of miniCollect" ddMatStyle>
       <span>{{ el.data }}</span>
     </div>
   </d-d-material-style>
@@ -64,7 +66,9 @@ See at <a target="_blank" href="https://stackblitz.com/edit/angular-jd6bgy?file=
 ```
 #### Component config
 ```
-@Input() config: {direction?: 'x' | 'y' | 'grid', matClick?: boolean, shadow?: boolean, collection?: any[], swipe?: string}
+@Input() config: {container: any, direction?: 'x' | 'y' | 'grid', matClick?: boolean, shadow?: boolean, collection?: any[], swipe?: string, autoWidth?: boolean, autoHeight?: boolean}
+@Input() draggable: boolean;
+@Input() laterInit: boolean;
 @Output() dChange: EventEmitter<IEvent>
 @Output() dDrop: EventEmitter<IEvent>
 ```

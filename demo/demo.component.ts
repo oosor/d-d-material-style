@@ -32,6 +32,7 @@ export class DemoComponent implements OnInit {
   freeBoxConfig: any = {matClick: true, shadow: null, swipe:  null};
   sorted: any = [];
   laterInit = false;
+  draggable = true;
   private _element: any;
 
   constructor() { }
